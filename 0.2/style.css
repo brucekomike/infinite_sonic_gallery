@@ -55,6 +55,7 @@ body {
   align-items: center;
   justify-content: center;
   scroll-snap-align: start;
+
   height: 100%;
   box-sizing: border-box;
 }
@@ -112,9 +113,35 @@ body {
   height: 50px; /* Fixed height */
   z-index: 1000;
 }
+
+@media (max-aspect-ratio: 1/1){
+  
+.card-frame {
+  padding-top: 40px; /* Increased padding for mobile */
+  scroll-snap-align: none;
+  scroll-padding-inline: 20px;
+}
+.card {
+  flex-direction: column;
+
+}
+.card-image {
+  padding-top: 20vh;
+  width: 100%;
+
+}
+
+.card-info {
+  width: 50%;
+  padding: 20px;
+}
+}
+
 @media (min-aspect-ratio: 1/1) {
+
   .card {
       flex-direction: row;
+
   }
 
   .card-image {
