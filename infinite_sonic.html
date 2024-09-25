@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>infinite sonic | 作品集</title>
+    <link rel="shortcut icon" href="https://fus-37.github.io/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="header">
+        <div class="banner">
+            <h1>昼与夜 | Day and Night</h1>
+            <p id="text"></p>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <img src="https://w3svwsauq3bn5lj.oss-cn-beijing.aliyuncs.com/img/WIINTER.png" alt="Winter" loading="lazy">
+            <div class="text">
+                <h2>Winter</h2>
+                <p></p>
+                <p>曲风 | 电子</p>
+                <p>制作 | Alyxium</p>
+                <p>封面 | 蔚山</p>
+                <p>母带 | FUS是福斯捏</p>
+                <p></p>
+                <a href="https://example.com">Listen Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <img src="https://w3svwsauq3bn5lj.oss-cn-beijing.aliyuncs.com/img/hydrangea%20haze.png" alt="hydrangea_haze" loading="lazy">
+            <div class="text">
+                <h2>hydrangea_haze</h2>
+                <p></p>
+                <p>曲风 | 金属</p>
+                <p>制作 | Aj1taniHifumi</p>
+                <p>封面 | 蔚山</p>
+                <p>母带 | FUS是福斯捏</p>
+                <p></p>
+                <a href="https://example.com">Listen Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <img src="https://w3svwsauq3bn5lj.oss-cn-beijing.aliyuncs.com/img/%E9%9D%92%E5%B2%9A.png" alt="青岚" loading="lazy">
+            <div class="text">
+                <h2>青岚</h2>
+                <p></p>
+                <p>曲风 | 电子</p>
+                <p>制作 | 冰橘子</p>
+                <p>封面 | 鲨plus</p>
+                <p>母带 | FUS是福斯捏</p>
+                <p></p>
+                <a href="https://example.com">Listen Now</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const texts = [
+            "探索声音的另类边界",
+            "回到栅栏之前，总要去墙外看一眼",
+            "天亮前的夜，最难熬" 
+        ];
+        let index = 0;
+        let charIndex = 0;
+        const typingSpeed = 100;
+        const erasingSpeed = 50;
+        const newTextDelay = 2000;
+        const textElement = document.getElementById("text");
+
+        function type() {
+            if (charIndex < texts[index].length) {
+                textElement.textContent += texts[index].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingSpeed);
+            } else {
+                setTimeout(erase, newTextDelay);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                textElement.textContent = texts[index].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingSpeed);
+            } else {
+                index = (index + 1) % texts.length;
+                setTimeout(type, typingSpeed + 1100);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(type, newTextDelay + 250);
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
+</body>
+
+<head>
+    <style type="text/css">
+        @import"./style.css"
+  </style>
+</head>
+
+</html>
