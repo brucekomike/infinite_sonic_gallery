@@ -47,7 +47,12 @@ body {
   border-top: 1px solid #444;
   background-color: rgba(34, 34, 34, 0);
 }
-
+.card-frame::-webkit-scrollbar {
+  display: none;
+}
+.preface {
+  height: max-content;
+}
 .card {
   flex: 0 0 100%;
   display: flex;
@@ -55,7 +60,7 @@ body {
   align-items: center;
   justify-content: center;
   scroll-snap-align: start;
-
+  overflow: hidden;
   height: 100%;
   box-sizing: border-box;
 }
@@ -117,11 +122,13 @@ body {
 @media (max-aspect-ratio: 1/1){
   
 .card-frame {
+  
   padding-top: 40px; /* Increased padding for mobile */
   scroll-snap-align: none;
   scroll-padding-inline: 20px;
 }
 .card {
+  overflow: hidden;
   flex-direction: column;
 
 }
